@@ -21,7 +21,7 @@
 		<folder>js/</folder>
 	</files>
 	<administration>
-		<menu link="option=com_simulation">Work Shop</menu>
+		<menu link="option=com_simulation">Simulation</menu>
 	    <files>
 	    	<filename component="com_simulation">simulation.php</filename>
 	    </files>

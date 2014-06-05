@@ -19,8 +19,6 @@ class SimulationViewDefault extends JViewLegacy
 		{
 			case "default": $this->defaultList();
 			  break;
-			case "registered-user": $this->registeredUser();
-			  break;
 			default: $this->createEvent();
 		}
 		

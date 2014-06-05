@@ -21,10 +21,17 @@ class SimulationController extends JControllerLegacy
 	{
 //		$view = $this->getView(JRequest::getVar('view'), 'html');
 //		$view->setModel($this->getModel('default'), true); // Default model
-		JRequest::setVar('view',JRequest::getVar('view')); // force it to be the search view		
-		JRequest::setVar('layout',JRequest::getVar('layout')); // force it to be the search view		
+		//JRequest::setVar('view',JRequest::getVar('view')); // force it to be the search view		
+		//JRequest::setVar('layout',JRequest::getVar('layout')); // force it to be the search view		
 //		return $view;
 		return parent::display($cachable, $urlparams);
+	}
+	
+	public function calculate(){
+		$val1 = JRequest::getVar("val1");
+		$val2 = JRequest::getVar("val2");
+		echo $val1 + $val2;
+		//exit;
 	}
 
 }
