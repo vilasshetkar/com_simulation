@@ -27,9 +27,9 @@ class SimulationController extends JControllerLegacy
 		return parent::display($cachable, $urlparams);
 	}
 	
-	public function calculate(){
-		$val1 = JRequest::getVar("val1");
-		$val2 = JRequest::getVar("val2");
+	public function simulation1(){
+		$val1 = JRequest::getVar("fixed-costs");
+		$val2 = JRequest::getVar("sales-qty");
 		echo $val1 + $val2;
 		//exit;
 	}
