@@ -1,14 +1,10 @@
 <?php
-/**
-* Author:	Omar Muhammad
-* Email:	admin@omar84.com
-* Website:	http://omar84.com
-* Component:Blank Component
-* Version:	3.0.0
-* Date:		03/11/2012
-* copyright	Copyright (C) 2012 http://omar84.com. All Rights Reserved.
-* @license	http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
-**/
+
+ini_set('display_errors','off');
+//ini_set('display_errors',0);
+//ini_set('display_startup_errors',-1);
+//error_reporting(0);
+
 // No direct access
 defined('_JEXEC') or die;
 
@@ -28,9 +24,21 @@ class SimulationController extends JControllerLegacy
 	}
 	
 	public function simulation1(){
-		$val1 = JRequest::getVar("fixed-costs");
-		$val2 = JRequest::getVar("sales-qty");
-		echo $val1 + $val2;
+		$model = $this->getModel('default');
+		
+		$solveFor = JRequest::getVar("solve-for");
+		
+		$fixedCosts = JRequest::getVar("fixed-costs");
+		$salesQty = JRequest::getVar("sales-qty");
+		$unit = JRequest::getVar("unit");
+		$salesValue = JRequest::getVar("sales-value");
+		$targetProfit = JRequest::getVar("target-profit");
+		
+		echo $model->getSimulation1($fixedCosts, $salesQty, $unit, $salesValue, $targetProfit, $solveFor);
+
+
+
+		//echo $val1 + $val2;
 		//exit;
 	}
 

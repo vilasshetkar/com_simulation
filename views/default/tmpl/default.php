@@ -27,7 +27,9 @@ defined('_JEXEC') or die;
 
 $document = JFactory::getDocument();
 
- 
+JFactory::getDocument()->addStyleSheet(JUri::base() . 'components/com_simulation/css/style.css');
+JFactory::getDocument()->addScript(JUri::base() . 'components/com_simulation/js/jquery.js');
+JFactory::getDocument()->addScript(JUri::base() . 'components/com_simulation/js/validator.min.js');
 
 // Add Javascript directly here
 
@@ -37,16 +39,16 @@ $document->addScriptDeclaration('
 
 ?>
 <script type="text/javascript">
-    jQuery(document).ready(function(){
-		jQuery("#btn").click(function(e) {
 
-			jQuery.ajax({
+    $(document).ready(function(){
+		$("#btn").click(function(e) {
+
+			$.ajax({
 				type: "POST",
 				url: "index.php?option=com_simulation&task=simulation1&format=raw",
-				data: jQuery("#form1").serialize(),
+				data: $("#form1").serialize(),
 				success: function(data){
-					jQuery("#data").html(data);
-				   alert(data);
+					$("#output").html(data);
 				}
 			});
         });
@@ -54,43 +56,49 @@ $document->addScriptDeclaration('
 
 	
 </script>
-
 <div class="row-fluid">
-		<form id="form1" action="" method="post">
+	<div class="span12">
+        <h2><small>Finance Simulation: </small> Break Even Point</h2>
+        <h4>Pankaj Kumar</h4>
+        <hr />
+	</div>
+</div>
+<div class="row-fluid">
+		<form id="form1" action="" method="post" data-toggle="validator" role="form" >
         	<fieldset>
             	<legend>Input</legend>
 	<div class="row-fluid">
 
 	<div class="span6">
-                  <div class="control-group">
+                  <div class="control-group form-group">
                     <label class="control-label" for="fixed-costs">Fixed Costs:</label>
                     <div class="controls">
-                      <input type="text" id="fixed-costs" name="fixed-costs" placeholder="Fixed Costs" required>
+                      <input type="text" id="fixed-costs" name="fixed-costs" placeholder="Fixed Costs" required >
                     </div>
                   </div><!-- Fixed Costs -->
 
-                  <div class="control-group">
+                  <div class="control-group form-group">
                     <label class="control-label" for="sales-qty">Sales Qty:</label>
                     <div class="controls">
                       <input type="text" id="sales-qty" name="sales-qty" placeholder="Sales Qty" required>
                     </div>
                   </div><!-- Sales Qty -->
 
-                  <div class="control-group">
+                  <div class="control-group form-group">
                     <label class="control-label" for="unit">Var. Costs/Unit:</label>
                     <div class="controls">
                       <input type="text" id="unit" name="unit" placeholder="Var. Costs/Unit" required>
                     </div><!-- Var. Costs/Unit -->
                   </div>
 
-                  <div class="control-group">
+                  <div class="control-group form-group">
                     <label class="control-label" for="sales-value">Sales Value: </label>
                     <div class="controls">
                       <input type="text" id="sales-value" name="sales-value" placeholder="Sales Value" required>
                     </div><!-- Sales Value -->
                   </div>
 
-                  <div class="control-group">
+                  <div class="control-group form-group">
                     <label class="control-label" for="target-profit">Target Profit: </label>
                     <div class="controls">
                       <input type="text" id="target-profit" name="target-profit" placeholder="Target Profit" required>
@@ -99,14 +107,14 @@ $document->addScriptDeclaration('
 
 	</div>
 	<div class="span6">
-                  <div class="control-group">
-                    <label class="control-label" for="sales-value">Product Name: </label>
+                  <div class="control-group form-group">
+                    <label class="control-label" for="product-name">Product Name: </label>
                     <div class="controls">
-                      <input type="text" id="sales-value" placeholder="Product Name">
+                      <input type="text" id="product-name" placeholder="Product Name">
                     </div><!-- Product Name -->
                   </div>
                  
-                  <div class="control-group">
+                  <div class="control-group form-group">
                     <label class="control-label" for="solve-for">Solve For: </label>
                     <div class="controls">
                     <select name="solve-for" id="solve-for">
@@ -127,6 +135,6 @@ $document->addScriptDeclaration('
         </form>
 </div>
 
-
-<div id="data">Nothing</div>
+<legend>Output</legend>
+<div id="output">Nothing</div>
 <hr class="divider">

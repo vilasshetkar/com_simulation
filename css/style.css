@@ -1,6 +1,22 @@
 @charset "utf-8";
 /* CSS Document */
-.tab-content > .active{
-	border:1px solid #dddddd;
-	border-top:none;
+.has-error input, .has-error textarea,  .has-error select{
+	border-color: #e9322d;
+	-webkit-box-shadow: 0 0 6px #f8b9b7;
+	-moz-box-shadow: 0 0 6px #f8b9b7;
+	box-shadow: 0 0 6px #f8b9b7;
+
+}
+.has-error input, .has-error textarea, .has-error select{
+	color: #b94a48;
+	border-color: #ee5f5b;
+}
+.has-error, .has-error .with-errors{
+	color: #b94a48;
+}
+.list-unstyled, .with-errors{
+	list-style:none;
+	display:inline-block;
+	margin:0;
+	padding:0;
 }
